@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css"> <!-- Enlace al archivo CSS -->
+    <title>Huellitas Urbanas</title>
 </head>
 <body>
     <!-- Barra de navegación -->
@@ -33,79 +34,38 @@
 
     <!-- Burbuja flotante -->
     <div id="chat-bubble" class="chat-bubble" onclick="toggleChat()">
-        💬
+        🐶
     </div>
 
-    <!-- Modal del chatbot -->
-    <div id="chat-modal" class="chat-modal">
-        <div class="chat-header">
-            <span>Chatbot Huellitas Urbanas</span>
-            <button class="close" onclick="toggleChat()">✖</button>
-        </div>
-        <div class="chat-content" id="chat-box">
-            <div class="message bot-message">¡Hola! Soy el chatbot del refugio de mascotas. ¿En qué puedo ayudarte hoy?</div>
-        </div>
-        <input type="text" id="user-input" placeholder="Escribe tu mensaje aquí...">
-        <button id="send-button">Enviar</button>
-    </div>
-
-    <!-- Contenido principal -->
-    <div class="content">
-        <!-- Aquí va tu contenido -->
-    </div>
+    <div class="chat-text">Chat</div>
 
     <script>
-        document.getElementById('send-button').addEventListener('click', function() {
-            const userInput = document.getElementById('user-input').value;
-            if (userInput.trim() === '') return;
-
-            // Mostrar el mensaje del usuario
-            addMessage('user', userInput);
-            document.getElementById('user-input').value = '';
-
-            // Responder con el chatbot
-            const botResponse = getBotResponse(userInput);
-            addMessage('bot', botResponse);
+        document.addEventListener('DOMContentLoaded', function() {
+            // Cargar el modal del chatbot
+            fetch('chatbot-modal.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.body.insertAdjacentHTML('beforeend', data); // Agregar el contenido al final del body
+                    loadChatbotScript(); // Ejecutar el script del chatbot
+                })
+                .catch(error => console.error('Error al cargar el modal:', error));
         });
-
-        // Agregar evento para detectar la tecla Enter
-        document.getElementById('user-input').addEventListener('keypress', function(event) {
-            if (event.key === 'Enter') {
-                event.preventDefault(); // Evitar el comportamiento predeterminado de Enter
-                document.getElementById('send-button').click(); // Simular clic en el botón
-            }
-        });
-
-        function addMessage(sender, message) {
-            const chatBox = document.getElementById('chat-box');
-            const messageDiv = document.createElement('div');
-            messageDiv.className = sender === 'user' ? 'message user-message' : 'message bot-message';
-            messageDiv.textContent = message;
-            chatBox.appendChild(messageDiv);
-            chatBox.scrollTop = chatBox.scrollHeight; // Desplazar hacia abajo
-        }
-
-        function getBotResponse(input) {
-            const lowerInput = input.toLowerCase();
-            if (lowerInput.includes('adoptar')) {
-                return '¡Claro! Tenemos muchas mascotas disponibles para adopción.';
-            } else if (lowerInput.includes('donaciones')) {
-                return '¡Gracias por tu interés! Puedes hacer donaciones a través de nuestra página de donaciones.';
-            } else if (lowerInput.includes('ayuda')) {
-                return 'Estoy aquí para ayudarte. ¿Qué necesitas saber?';
-            } else if (lowerInput.includes('vacunacion')) {
-                return '¡Claro! Nuestras mascotas cuentan con todas sus vacunas.';
-
-            } else {
-                return 'Lo siento, no entiendo tu pregunta. ¿Puedes reformularla?';
-            }
-        }
 
         function toggleChat() {
             const chatModal = document.getElementById('chat-modal');
             chatModal.style.display = chatModal.style.display === 'none' || chatModal.style.display === '' ? 'block' : 'none';
         }
-    </script>
 
+        // Función para cargar y ejecutar el script del chatbot
+        function loadChatbotScript() {
+            const script = document.createElement('script');
+            script.src = 'chatbot-script.js';  // Cargar el script que maneja la lógica del chatbot
+            script.onload = () => {
+                console.log('Script del chatbot cargado');
+            };
+            document.body.appendChild(script);
+        }
+        
+    </script>
 </body>
 </html>

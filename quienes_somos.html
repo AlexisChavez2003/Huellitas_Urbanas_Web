@@ -62,6 +62,42 @@
     <div class="content">
         <!-- Aquí va más contenido si es necesario -->
     </div>
+ <!-- Burbuja flotante -->
+ <div id="chat-bubble" class="chat-bubble" onclick="toggleChat()">
+    🐶
+</div>
+
+<div class="chat-text">Chat</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Cargar el modal del chatbot
+        fetch('chatbot-modal.html')
+            .then(response => response.text())
+            .then(data => {
+                document.body.insertAdjacentHTML('beforeend', data); // Agregar el contenido al final del body
+                loadChatbotScript(); // Ejecutar el script del chatbot
+            })
+            .catch(error => console.error('Error al cargar el modal:', error));
+    });
+
+    function toggleChat() {
+        const chatModal = document.getElementById('chat-modal');
+        chatModal.style.display = chatModal.style.display === 'none' || chatModal.style.display === '' ? 'block' : 'none';
+    }
+
+    // Función para cargar y ejecutar el script del chatbot
+    function loadChatbotScript() {
+        const script = document.createElement('script');
+        script.src = 'chatbot-script.js';  // Cargar el script que maneja la lógica del chatbot
+        script.onload = () => {
+            console.log('Script del chatbot cargado');
+        };
+        document.body.appendChild(script);
+    }
+    
+</script>
+
 </body>
 </html>
 

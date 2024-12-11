@@ -677,4 +677,15 @@ body {
     margin-top: 10px; /* Espacio superior */
 }
 
-
+/* Estilo para el texto flotante */
+.chat-text {
+    position: fixed;
+    bottom: 50px; /* Ajusta la posición vertical */
+    right: 80px; /* Ajusta la posición horizontal */
+    background-color: #e6eaec; /* Color de fondo */
+    color: rgb(22, 22, 22); /* Color del texto */
+    padding: 3px 5px; /* Espaciado interno */
+    border-radius: 10px; /* Bordes redondeados */
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+    font-size: 14px;
+}
