@@ -47,6 +47,16 @@ function getBotResponse(input) {
     const lowerInput = input.toLowerCase();
     if (lowerInput.includes('adoptar')) {
         return 'Para adoptar una mascota, visita nuestro catálogo disponible en nuestra pagina web, selecciona una mascota, y sigue las instrucciones en la sección de adopción. ¡Te ayudaremos en cada paso!';
+    } else if (lowerInput.includes('hola')) {
+        return '¡Hola! Soy el chatbot de Huellitas Urbanas. ¿En qué puedo ayudarte hoy?';
+    } else if (lowerInput.includes('buenos dias')) {
+        return '¡Hola! Soy el chatbot de Huellitas Urbanas. ¿En qué puedo ayudarte hoy?';
+    } else if (lowerInput.includes('Buenos dias')) {
+        return '¡Hola! Soy el chatbot de Huellitas Urbanas. ¿En qué puedo ayudarte hoy?';
+    } else if (lowerInput.includes('buenas tardes')) {
+        return '¡Hola! Soy el chatbot de Huellitas Urbanas. ¿En qué puedo ayudarte hoy?';
+    } else if (lowerInput.includes('Buenas tardes')) {
+        return '¡Hola! Soy el chatbot de Huellitas Urbanas. ¿En qué puedo ayudarte hoy?';
     } else if (lowerInput.includes('adopción')) {
         return 'Para adoptar una mascota, visita nuestro catálogo disponible en nuestra pagina web, selecciona una mascota, y sigue las instrucciones en la sección de adopción. ¡Te ayudaremos en cada paso!';
     } else if (lowerInput.includes('adopcion')) {
@@ -67,6 +77,12 @@ function getBotResponse(input) {
         return 'Puedes contactarnos desde nuestra página de Contacto o escribirnos directamente a huellitasurbanas@gmail.com';
     } else if (lowerInput.includes('contactar')) {
         return 'Puedes contactarnos desde nuestra página de Contacto o escribirnos directamente a huellitasurbanas@gmail.com';
+    } else if (lowerInput.includes('Labor')) {
+        return 'Si quieres saber mas sobre nuestra labor puedes visitar nuestro apartado "quienes somos"';
+    } else if (lowerInput.includes('labor')) {
+        return 'Si quieres saber mas sobre nuestra labor puedes visitar nuestro apartado "quienes somos"';
+    } else if (lowerInput.includes('hacen')) {
+        return 'Si quieres saber mas sobre nuestra labor puedes visitar nuestro apartado "quienes somos"';
     } else {
         return 'Lo siento, no entiendo tu pregunta. ¿Puedes reformularla?';
     }
